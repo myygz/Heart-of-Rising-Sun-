@@ -1,0 +1,1405 @@
+focus_tree = {
+	id = hrs_basmachi
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TMS
+		}
+	}
+	default = no
+	focus = {
+		id = TMS_retirement_of_general
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 5.00
+		mutually_exclusive = {
+			focus = TMS_frunze_continue_his_mandate
+		}
+		x = 7
+		y = 0
+	
+		available_if_capitulated = yes
+
+		completion_reward = {
+			remove_ideas = TMS_Mikhail_Frunze_hog
+			add_political_power = 100
+			add_stability = -0.05
+			hidden_effect = {
+				set_country_flag = can_replace_em
+				set_country_flag = can_replace_fm
+				set_country_flag = can_replace_dm
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_frunze_continue_his_mandate
+		icon = GFX_focus_usa_voter_registration_act
+		cost = 5.00
+		mutually_exclusive = {
+			focus = TMS_retirement_of_general
+		}
+		x = 10
+		y = 0
+		
+		available_if_capitulated = yes
+		
+		available = {
+			always = no
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.02
+			hidden_effect = {
+				set_country_flag = can_replace_em
+				set_country_flag = can_replace_fm
+				set_country_flag = can_replace_dm
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_second_basmachi_movement
+		icon = GFX_focus_yug_pan_slavic_congress
+		cost = 10.00
+		x = 19
+		y = 0
+		
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			every_country = {
+				limit = { 
+					is_turks_country = yes 
+					NOT = { has_government = communism }
+				}
+				add_opinion_modifier = {
+					target = TMS
+					modifier = red_menace
+				}
+			}
+			every_country = {
+				limit = { 
+					is_turks_country = yes 
+					has_government = communism
+				}
+				add_opinion_modifier = {
+					target = TMS
+					modifier = pan_turkism
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_appoint_enver_pasha
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_retirement_of_general
+		}
+		mutually_exclusive = {
+			focus = TMS_appoint_ibrhim_bek
+		}
+		x = 1
+		y = 1
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+				ideology = interventionism
+				popularity = 0.35
+			}
+			add_political_power = -50
+			add_ideas = TMS_Enver_Pasha_hog
+		}
+
+	}
+	focus = {
+		id = TMS_tie_with_neighbourhood
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_appoint_enver_pasha
+		}
+		mutually_exclusive = {
+			focus = TMS_appease_with_bukhara
+		}
+		x = 2
+		y = 2
+		
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = TMS_ottoman_will_support_us
+			add_opinion_modifier = {
+				target = TUR
+				modifier = famility_tie 
+			}
+			TUR = {
+				add_opinion_modifier = {
+					target = TMS
+					modifier = famility_tie 
+				}
+			}
+			hidden_effect = {
+				TUR = {
+					add_ai_strategy = {
+						type = protect
+						id = TMS
+						value = 200
+					}
+				}
+				
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_appoint_ibrhim_bek
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_retirement_of_general
+		}
+		mutually_exclusive = {
+			focus = TMS_appoint_haji_usman
+			focus = TMS_appoint_enver_pasha
+		}
+		x = 3
+		y = 1
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.40
+			}
+			add_political_power = -30
+			add_ideas = TMS_Enver_Pasha_hog
+		}
+
+	}
+	focus = {
+		id = TMS_appease_with_bukhara
+		icon = GFX_goal_generic_major_alliance
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_appoint_ibrhim_bek
+		}
+		mutually_exclusive = {
+			focus = TMS_tie_with_neighbourhood
+		}
+		x = 4
+		y = 2
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = TMS_bukhara_will_support_us
+			add_opinion_modifier = {
+				target = UZB
+				modifier = famility_tie 
+			}
+			UZB = {
+				add_opinion_modifier = {
+					target = TMS
+					modifier = famility_tie 
+				}
+			}
+			hidden_effect = {
+				UZB = {
+					add_ai_strategy = {
+						type = protect
+						id = TMS
+						value = 200
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = TMS_discard
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 20.00
+		prerequisite = {
+			focus = TMS_appease_with_bukhara
+			focus = TMS_tie_with_neighbourhood
+		}
+		x = 3
+		y = 3
+		
+		available_if_capitulated = yes
+		
+		cancel = {
+			has_country_flag = reactionary_coup_etat_failed
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = TMS_bolsheviks_angered
+		}
+
+	}
+	focus = {
+		id = TMS_appoint_haji_usman
+		icon = GFX_goal_support_democracy
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_retirement_of_general
+		}
+		mutually_exclusive = {
+			focus = TMS_appoint_ibrhim_bek
+		}
+		x = 5
+		y = 1
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 10
+			add_ideas = TMS_Haji_Usman_hog
+		}
+		
+	}
+	focus = {
+		id = TMS_appoint_capable
+		icon = GFX_focus_generic_military_academy
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_appoint_ibrhim_bek
+			focus = TMS_appoint_haji_usman
+		}
+		prerequisite = {
+			focus = TMS_appoint_enver_pasha
+		}
+		mutually_exclusive = {
+			focus = TMS_elect_officer
+		}
+		x = 6
+		y = 2
+		
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = TMS_basmachi_movement
+				add_idea =  TMS_basmachi_movement1
+			}
+		}
+	}
+	focus = {
+		id = TMS_bolsheviks_influence
+		icon = GFX_focus_generic_soviet_politics
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_retirement_of_general
+		}
+		x = 7
+		y = 1
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_political_power = 80
+			add_popularity = {
+				ideology = communism
+				popularity = 0.10
+			}
+			set_country_flag = Frunze_accepted_Bolsheviks
+		}
+
+	}
+	focus = {
+		id = TMS_elect_officer
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_bolsheviks_influence
+			focus = TMS_appoint_haji_usman
+			focus = TMS_appoint_ibrhim_bek
+			focus = TMS_appoint_enver_pasha
+		}
+		mutually_exclusive = {
+			focus = TMS_appoint_capable
+		}
+		x = 8
+		y = 2
+			
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = TMS_basmachi_movement
+				add_idea =  TMS_basmachi_movement2
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_an_army_with_country
+		icon = GFX_goal_generic_demand_territory
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_appoint_capable
+			focus = TMS_elect_officer
+		}
+		mutually_exclusive = {
+			focus = TMS_a_normal_country
+		}
+		x = 6
+		y = 3
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_country_flag = reactionary_coup_etat_failed
+		}
+		
+		completion_reward = {
+			add_ideas = TMS_basmachi_army
+			set_country_flag = TMS_militarised_country
+		}
+
+	}
+	focus = {
+		id = TMS_a_normal_country
+		icon = GFX_focus_generic_support_the_left_right
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_appoint_capable
+			focus = TMS_elect_officer
+		}
+		mutually_exclusive = {
+			focus = TMS_an_army_with_country
+		}
+		x = 8
+		y = 3
+		
+		available = {
+			has_country_flag = reactionary_coup_etat_failed
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = TMS_turkestan_state
+			set_cosmetic_tag = TMS_turkestan
+			set_country_flag = TMS_turn_basmachi_into_country
+		}
+
+	}
+	focus = {
+		id = TMS_personal_cult
+		icon = GFX_goal_generic_war_with_comintern
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_frunze_continue_his_mandate
+		}
+		x = 10
+		y = 1
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			#
+		}
+
+	}
+	focus = {
+		id = TMS_accept_panturkism
+		icon = GFX_goal_generic_major_war
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_frunze_continue_his_mandate
+		}
+		x = 12
+		y = 1
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			#
+		}
+	}
+	focus = {
+		id = TMS_ready_for_turlan_revolution
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_personal_cult
+		}
+		prerequisite = {
+			focus = TMS_accept_panturkism
+		}
+		x = 10
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			create_wargoal = {
+				target = UZB
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = KAZ
+				type = annex_everything
+			}
+			create_wargoal = {
+				target = AFG
+				type = annex_everything
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_checkmate
+		icon = GFX_focus_eng_move_to_secure_the_dominions
+		cost = 20.00
+		prerequisite = {
+			focus = TMS_ready_for_turlan_revolution
+		}
+		x = 10
+		y = 3
+		
+		cancel = {
+			has_country_flag = reactionary_coup_etat_failed
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = TMS_soldiers_angered
+		}
+
+
+	}
+	focus = {
+		id = TMS_contact_with_bolsheviks
+		icon = GFX_goal_tfv_sever_ties_with_uk
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_discard
+			focus = TMS_checkmate
+		}
+		x = 7
+		y = 4
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = communist_influence
+		}
+	}
+	focus = {
+		id = TMS_purge_reactionaries
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_contact_with_bolsheviks
+		}
+		x = 3
+		y = 5
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = TMS_clamp_down_on_reactionaries
+		}
+
+	}
+	focus = {
+		id = TMS_tukrs_national_socialism
+		icon = GFX_focus_generic_join_comintern
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_contact_with_bolsheviks
+		}
+		mutually_exclusive = {
+			focus = TMS_attract_revolutionaries
+		}
+		x = 8
+		y = 5
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			set_country_flag = TMS_national_communism
+		}
+
+	}
+	focus = {
+		id = TMS_socialist_construction
+		icon = GFX_goal_generic_soviet_construction
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_contact_with_bolsheviks
+		}
+		x = 11
+		y = 5
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = CHI_public_works
+		}
+
+
+	}
+	focus = {
+		id = TMS_local_factory
+		icon = GFX_goal_generic_construct_civilian
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_second_basmachi_movement
+		}
+		x = 15
+		y = 1
+		
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_ideas = CHI_public_works
+			add_tech_bonus = {
+				category = industry
+				bonus = 0.5
+				uses = 1
+			}
+			add_tech_bonus = {
+				category = construction_tech
+				bonus = 0.5
+				uses = 1
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_local_manufactures
+		icon = GFX_goal_generic_construct_civ_factory
+		cost = 6.00
+		prerequisite = {
+			focus = TMS_local_factory
+		}
+		x = 14
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}				
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_small_arms_factory
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 6.00
+		prerequisite = {
+			focus = TMS_local_factory
+		}
+		x = 16
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}				
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_expand_habour
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_local_manufactures
+		}
+		prerequisite = {
+			focus = TMS_small_arms_factory
+		}
+		x = 15
+		y = 3
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					#province = { 7477 }
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			
+		}
+	}
+	focus = {
+		id = TMS_collaborate_with_international
+		icon = GFX_focus_generic_join_comintern
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_second_basmachi_movement
+		}
+		mutually_exclusive = {
+			focus = TMS_under_banner_allah
+		}
+		x = 18
+		y = 1
+		
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_to_tech_sharing_group = JAP_kominterun_research
+			UPR = {
+				add_ai_strategy = {
+					type = protect
+					id = TMS
+					value = 200
+				}
+				send_equipment = {
+					target = TMS
+					type = infantry_equipment
+					amount = 2000
+				}
+				send_equipment = {
+					target = TMS
+					type = artillery_equipment
+					amount = 500
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = TMS_under_banner_allah
+		icon = GFX_goal_generic_political_pressure
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_second_basmachi_movement
+		}
+		mutually_exclusive = {
+			focus = TMS_collaborate_with_international
+		}
+		x = 20
+		y = 1
+		
+		available = {
+			has_government = interventionism
+		}
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			set_rule = {
+				can_create_factions = yes
+			}
+			AFG = {
+				send_equipment = {
+					target = TMS
+					type = infantry_equipment
+					amount = 500
+				}
+				send_equipment = {
+					target = TMS
+					type = artillery_equipment
+					amount = 20
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_liberate_bukhara
+		icon = GFX_focus_eng_crush_the_dream
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_collaborate_with_international
+			focus = TMS_under_banner_allah
+		}
+		x = 19
+		y = 2
+		
+		available = {
+			UZB = {
+				exists = yes
+				is_puppet = no
+				NOT = { has_government = communism }
+			}
+		}
+		
+		bypass = {
+			UZB = {
+				OR = {
+					exists = no
+					is_puppet_of = TMS
+					has_government = communism
+				}
+				
+			}
+		}
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			create_wargoal = {
+				target = UZB
+				type = annex_everything
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_challenge_alash
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_liberate_bukhara
+		}
+		x = 18
+		y = 3
+		
+		available = {
+			KAZ = {
+				exists = yes
+				is_puppet = no
+				NOT = { has_government = communism }
+			}
+		}
+		
+		bypass = {
+			KAZ = {
+				OR = {
+					exists = no
+					is_puppet_of = TMS
+					has_government = communism
+				}
+			}
+		}
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			create_wargoal = {
+				target = KAZ
+				type = annex_everything
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_liberate_kokand
+		icon = GFX_goal_generic_demand_territory
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_liberate_bukhara
+		}
+		x = 20
+		y = 3
+		
+		available = {
+			KSG = {
+				exists = yes
+				is_puppet = no
+				NOT = { has_government = communism }
+			}
+		}
+		
+		bypass = {
+			owns_state = 732
+		}
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			add_state_core = 732
+			create_wargoal = {
+				target = KSG
+				type = take_core_state
+			}
+		}
+
+
+	}
+	focus = {
+		id = TMS_red_turlan
+		icon = GFX_focus_eng_expose_the_belly_of_the_bear
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_challenge_alash
+		}
+		prerequisite = {
+			focus = TMS_liberate_kokand
+		}
+		x = 19
+		y = 4
+		
+		available = {
+			every_state = {
+				limit = {
+					AND = {
+						is_core_of = KYR
+						is_core_of = UZB
+						is_core_of = TMS
+						is_core_of = KAZ
+					}
+				}
+				is_fully_controlled_by = TMS
+			}
+		}
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = TMS_internationalism }
+				set_cosmetic_tag = TURAN_unified
+				set_capital = 405
+				capital_scope = {
+					add_extra_state_shared_building_slots = 2
+				}
+				hidden_effect = {
+					all_state = {
+						limit = {
+							AND = {
+								is_core_of = KYR
+								is_core_of = UZB
+								is_core_of = KAZ
+								is_core_of = TAJ
+							}
+						}
+						add_core_of = TMS
+					}
+				}
+			}
+			if = {
+				limit = { has_country_flag = TMS_national_communism }
+				set_cosmetic_tag = TURAN_unified
+				set_capital = 405
+				capital_scope = {
+					add_extra_state_shared_building_slots = 2
+				}
+				SIK = { set_state_owner = 619 }
+				619 = {	add_core_of = SIK }
+				release_autonomy = {
+					target = KAZ
+					autonomy_state = autonomy_union_republic
+				}
+				release_autonomy = {
+					target = UZB
+					autonomy_state = autonomy_union_republic
+				}
+				hidden_effect = {
+					KAZ = { set_cosmetic_tag = KAZ_TURAN }
+					UZB = { set_cosmetic_tag = UZB_TURAN }
+					405 = { add_core_of = TMS }
+					742 = { add_core_of = TMS }
+				}
+			}
+			
+		}
+	}
+	focus = {
+		id = TMS_give_shelter_to_radicals
+		icon = GFX_goal_generic_major_alliance
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_second_basmachi_movement
+		}
+		x = 24
+		y = 1
+		
+		available_if_capitulated = yes
+		
+		completion_reward = {
+			army_experience = 30
+			add_tech_bonus = {
+				category = land_doctrine
+				bonus = 0.5
+				uses = 2
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_foreign_investment
+		icon = GFX_focus_mex_privatisation
+		cost = 6.00
+		prerequisite = {
+			focus = TMS_give_shelter_to_radicals
+		}
+		x = 22
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		available = {
+			AFG = {
+				has_opinion = {
+					target = TMS
+					value > 50
+				}
+			}
+		}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}				
+				add_extra_state_shared_building_slots = 1
+			}
+			AFG = { add_timed_idea = { idea = foreign_investiment  days = 90 }  }
+		}
+
+
+	}
+	focus = {
+		id = TMS_afghanistan_aid
+		icon = GFX_goal_generic_forceful_treaty
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_foreign_investment
+		}
+		x = 22
+		y = 3
+		
+		available_if_capitulated = yes
+		
+		available = {
+			AFG = {
+				has_opinion = {
+					target = TMS
+					value > 90
+				}
+			}
+		}
+		
+		completion_reward = {
+			add_manpower = 20000
+		}
+
+	}
+	focus = {
+		id = TMS_ask_for_upr
+		icon = GFX_goal_generic_national_unity
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_give_shelter_to_radicals
+		}
+		x = 24
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		available = {
+			SIK = {
+				has_opinion = {
+					target = TMS
+					value > 50
+				}
+			}
+			has_government = communism
+		}
+		
+		completion_reward = {
+			SIK = {
+				add_ai_strategy = {
+					type = protect
+					id = TMS
+					value = 200
+				}
+			}
+			if = {
+				limit = { 
+					is_faction_leader = yes 
+					SIK = { is_in_faction = no }
+				}
+				SIK = { country_event = generic.2}
+			}
+		}
+
+
+	}
+	focus = {
+		id = TMS_turks_fighters
+		icon = GFX_goal_generic_dangerous_deal
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_ask_for_upr
+		}
+		x = 24
+		y = 3
+		
+		
+		available_if_capitulated = yes
+		
+		available = {
+			SIK = {
+				has_opinion = {
+					target = TMS
+					value > 50
+				}
+			}
+			has_government = communism
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = TMS_uyghur_volunteers_arrived
+			add_manpower = 5000
+			hidden_effect = {
+				load_oob = TMS_Basmachi_support
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_arm_fishingboat
+		icon = GFX_focus_generic_destroyer
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_turks_fighters
+		}
+		x = 24
+		y = 4
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_equipment = {
+				convoy_1 > 1
+			}
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = TMS_arm_fishingboat_hrs
+			add_tech_bonus = {
+				category = dd_tech
+				bonus = 1
+				uses = 1
+			}
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				# Destroyers #
+				create_equipment_variant = {
+					name = "Basmachi Class"			
+					type = ship_hull_light_1
+					#name_group = CHI_DD_HISTORICAL
+					parent_version = 0
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = empty
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = light_ship_engine_1
+						fixed_ship_torpedo_slot = empty
+						mid_1_custom_slot = empty
+						rear_1_custom_slot = empty
+					}
+				}
+			}
+			hidden_effect = {
+				load_oob = TMS_Basmachi_naval_mtg
+				destroy_ships = {
+					type = convoy
+					count = 2
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_reeducation_campaign
+		icon = GFX_focus_prc_agrarian_socialism
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_purge_reactionaries
+		}
+		x = 2
+		y = 6
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			add_ideas = JAP_reeducation_campaign
+		}
+
+	}
+	focus = {
+		id = TMS_attract_revolutionaries
+		icon = GFX_goal_support_communism
+		cost = 5.00
+		prerequisite = {
+			focus = TMS_contact_with_bolsheviks
+		}
+		mutually_exclusive = {
+			focus = TMS_tukrs_national_socialism
+		}
+		x = 6
+		y = 5
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			UPR = { country_event = generic.2 }
+			set_country_flag = TMS_internationalism
+		}
+
+	}
+	focus = {
+		id = TMS_reinforce_soviet
+		icon = GFX_focus_yug_pan_slavic_congress
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_purge_reactionaries
+		}
+		x = 4
+		y = 6
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			add_ideas = FAR_empowered_soviets
+		}
+
+	}
+	focus = {
+		id = TMS_develop_caspian_oild
+		icon = GFX_goal_generic_oil_refinery
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_socialist_construction
+		}
+		x = 10
+		y = 6
+		
+		available_if_capitulated = yes
+		
+		available = {
+			owns_state = 584
+		}
+		
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 10
+				state = 584
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_repair_infrastructure
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_socialist_construction
+		}
+		x = 12
+		y = 6
+		
+		available_if_capitulated = yes
+		
+		available = {
+			owns_state = 584
+		}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}				
+			}
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}				
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_funze_thought
+		icon = GFX_focus_eng_crush_the_dream
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_tukrs_national_socialism
+			focus = TMS_attract_revolutionaries
+		}
+		x = 7
+		y = 6
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = TMS_internationalism }
+				swap_ruler_traits = {
+					remove = cornered_fox
+					add = comintern_workhorse
+				}
+			}
+			if = {
+				limit = { has_country_flag = TMS_national_communism }
+				swap_ruler_traits = {
+					remove = cornered_fox
+					add = veteran_communist
+				}
+			}
+			if = {
+				limit = { has_country_flag = TMS_turn_basmachi_into_country }
+				swap_ruler_traits = {
+					remove = revolutionary_general
+					add = strict_austerity_adherent
+				}
+			}
+		}
+	}
+	focus = {
+		id = TMS_uyghurstan_aid
+		icon = GFX_goal_molotov_ribbentrop_pact
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_give_shelter_to_radicals
+		}
+		x = 26
+		y = 2
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+		}
+		
+		completion_reward = {
+			add_opinion_modifier = {
+				target = SIK
+				modifier = anti_imperialist
+			}
+			SIK = {
+				add_opinion_modifier = {
+					target = TMS
+					modifier = anti_imperialist
+				}
+			}
+		}
+
+	}
+	focus = {
+		id = TMS_upr_factory
+		icon = GFX_goal_generic_soviet_construction
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_uyghurstan_aid
+		}
+		x = 26
+		y = 3
+		
+		
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+			OR = {
+				is_in_faction_with = UPR
+				UPR = { 
+					has_opinion = {
+						target = TMS
+						value > 90
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}				
+				add_extra_state_shared_building_slots = 2
+			}
+			
+		}
+	}
+	focus = {
+		id = TMS_upr_boat
+		icon = GFX_focus_hol_legacy_of_the_de_zeven_provincien_mutiny
+		cost = 10.00
+		prerequisite = {
+			focus = TMS_upr_factory
+		}
+		x = 26
+		y = 4
+
+		available_if_capitulated = yes
+		
+		available = {
+			has_government = communism
+			OR = {
+				is_in_faction_with = UPR
+				UPR = { 
+					has_opinion = {
+						target = TMS
+						value > 90
+					}
+				}
+			}
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = TMS_upr_fleet
+			hidden_effect = {
+				load_oob = TMS_Basmachi_uprboat
+			}
+			
+			
+		}
+	}
+}
