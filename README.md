@@ -1,3 +1,3 @@
-# Heart-of-Rising-Sun-
+# Heart-of-Red-Sun-
 An alternative history mod for HOI4
-Major countries: Dual Monarchy, Socialist Union of East Asia, Polish-Lithuianian Commonwealth, German Union, Free States of Anglica, etc
+Major countries: Angevin Demoratorship, People's Republics Union, Polish-Lithuianian Commonwealth, German Confederation, Free States of Anglica, etc
